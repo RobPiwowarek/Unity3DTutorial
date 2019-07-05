@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class Buka : MonoBehaviour
 {
-    private float timeLeft = 100;
+    private float timeLeft = 1f;
 
     private bool left = true;
 
+    public GameObject bullet;
+    
     public Transform m_leftSensor;
     public Transform m_rightSensor;
+    public Transform firePoint;
     private LayerMask m_WhatIsGround;
     // Start is called before the first frame update
     void Start()
@@ -46,13 +49,20 @@ public class Buka : MonoBehaviour
         Vector2 targetVelocity;
         if (left)
         {
-            targetVelocity = new Vector2(-10f, body.velocity.y);
+            targetVelocity = new Vector2(-2f, body.velocity.y);
         }
         else
         {
-            targetVelocity = new Vector2(10f, body.velocity.y);
+            targetVelocity = new Vector2(2f, body.velocity.y);
         }
 
         body.velocity = targetVelocity;
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0f)
+        {
+            timeLeft = 1f;
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+        }
     }
 }
