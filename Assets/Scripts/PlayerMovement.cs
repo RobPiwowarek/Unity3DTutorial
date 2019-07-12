@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("logowac mozna tak");
+        //Debug.Log("logowac mozna tak");
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;   // lewo -1 1 prawo 
         if (Input.GetButtonDown("Jump")) // czemu jump? edit -> project settings -> input
         {
